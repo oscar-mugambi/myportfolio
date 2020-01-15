@@ -1,0 +1,369 @@
+@import "config";
+@import "menu";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include background();
+  background: $primary-color;
+  color: set-text-color($primary-color);
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+}
+
+ion-icon {
+  font-size: 56px;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+  height: 5rem;
+}
+
+.container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.container ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  float: left;
+  width: 100px;
+  // padding: 10px 0;
+}
+
+.nav li {
+  display: inline-block;
+  margin-left: 70px;
+  margin-right: 60px;
+  padding-top: 25px;
+  z-index: 55;
+  font-weight: 900;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.nav a:hover {
+  color: #000;
+}
+/* ------------------------------------------ */
+/* HEADINGS */
+/*---------------------------------------------*/
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+
+  &.lg-heading {
+    // same as saying h1.lg-heading
+    font-size: 5rem;
+    background: rgba(darken($primary-color, 1), 0.8);
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  &.sm-heading {
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    background: rgba(lighten($primary-color, 2), 0.5);
+  }
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header {
+  position: sticky; //position sticks around
+  z-index: 3;
+  width: 100%;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+main {
+  padding: 4rem;
+  //height: 100%;
+
+  min-height: calc(100vh-60px); //sticky footer
+
+  .icons {
+    // affects icons nested in main
+    margin-top: 1rem;
+
+    a {
+      // since each icon is wrapped in an a tag
+      padding: 0.4rem;
+
+      &:hover {
+        // equivalent to a:hover
+        color: $secondary-color;
+        @include easeOut();
+      }
+    }
+  }
+
+  &#home {
+    overflow: hidden; // no scrollbars on the homepage
+
+    h1 {
+      margin-top: 20vh;
+    }
+  }
+}
+
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas:
+    "bioimage bio bio"
+    "job1 job2 job3";
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.bio-image {
+  grid-area: bioimage;
+  margin: auto;
+  border-radius: 50%;
+  border: $secondary-color 3px solid;
+}
+
+.bio {
+  grid-area: bio;
+}
+
+.job1 {
+  grid-area: job1;
+}
+.job2 {
+  grid-area: job2;
+}
+.job3 {
+  grid-area: job3;
+}
+
+.job {
+  background: lighten($primary-color, 5);
+  padding: 0.5rem;
+  border-bottom: $secondary-color 5px solid;
+}
+
+// Work Projects
+
+// .projects {
+//   display: grid;
+//   grid-gap: 1.8rem;
+//   grid-template-columns: 60px 60px;
+
+//   img {
+//     width: 100%;
+//     // border: 3px#fff solid;
+
+//     &:hover {
+//       opacity: 0.5;
+//       // border-color: $secondary-color;
+//       @include easeOut;
+//     }
+//   }
+// }
+
+.p-arrange {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  left: 30rem;
+}
+.a-arrange {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  border-style: solid;
+  border-color: $secondary-color;
+  margin: 5px;
+}
+
+.b-arrange {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  border-style: solid;
+  border-color: $secondary-color;
+  margin: 5px;
+}
+
+.c-arrange {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  border-style: solid;
+  border-color: $secondary-color;
+  margin: 5px;
+}
+.a-arrange::before {
+  content: "HTML & CSS";
+  position: absolute;
+  left: 15rem;
+  color: $secondary-color;
+}
+
+.b-arrange::before {
+  content: "React";
+  position: absolute;
+  left: 16.5rem;
+  color: $secondary-color;
+}
+
+.c-arrange::before {
+  content: "JavaScript";
+  position: absolute;
+  left: 16.5rem;
+  color: $secondary-color;
+}
+
+.a-arrange::before,
+.b-arrange::before,
+.c-arrange::before {
+  color: $secondary-color;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+
+  .item img {
+    width: 14rem;
+    height: 9.3rem;
+    margin: 2.2rem;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 3s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    }
+  }
+}
+
+//Button Styles
+
+.btn {
+  display: inline-block;
+  position: relative;
+  border: 0;
+  margin-bottom: 0.3rem;
+  &:hover {
+    background: $secondary-color;
+    color: set-text-color($secondary-color);
+  }
+}
+
+// Contact Page
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+
+  div {
+    font-size: 2.1rem;
+    border: 1px #fff solid;
+    padding: 1.5rem 3.5rem;
+    margin-bottom: 3rem;
+    @include easeOut;
+
+    &:hover {
+      border: 1px $secondary-color solid;
+      padding: 0.5rem 5.5rem;
+      background: $secondary-color;
+      color: set-text-color($secondary-color);
+      span {
+        color: set-text-color($secondary-color);
+      }
+    }
+  }
+}
+
+//Button Styles
+
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  &:hover {
+    background: $secondary-color;
+    color: set-text-color($secondary-color);
+  }
+}
+
+.btn-dark {
+  @extend .btn;
+  background: darken($primary-color, 50);
+  color: #fff;
+}
+
+.btn-light {
+  @extend .btn;
+  background: lighten($primary-color, 50);
+  color: #fff;
+}
+
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: darken($primary-color, 10);
+  color: set-text-color($primary-color);
+  height: 60px;
+}
+
+h6 {
+  font-size: 15px;
+  margin-top: 5px;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.job h3 {
+  font-weight: 600;
+  color: #4fdce0f3;
+}
+
+@import "mobile";
+
+.item p {
+  color: #fff;
+  text-align: center;
+  margin-top: -1.5rem;
+
+  font-size: 1.15rem;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
